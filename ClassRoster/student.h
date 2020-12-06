@@ -21,14 +21,14 @@ class Student {
 		short courseDurationInDays[numberOfCourses];
 		DegreeProgram degreeProgram;
 	public:
-		// Default constructor:
+		// Calling default constructor:
 		Student();
-		// 2d. Constructor using all of the input parameters provided in the table:
+		// Calling constructor using all of the input parameters:
 		Student(string studentID, string firstName, string lastName, string email, short age, short courseDurationInDays[numberOfCourses], DegreeProgram degreeProgram);
-		// Destructor:
+		// Calling Destructor:
 		~Student();
 
-		// 2a. Getters - an accessor for each instance variable from part D1:
+		// 2a. Inititializing Getters - an accessor for each instance variable from part D1:
 		string getID();
 		string getFullName();
 		string getEmail();
@@ -36,7 +36,7 @@ class Student {
 		short* getCourseDurations();
 		DegreeProgram getDegreeProgram();
 
-		// 2b. Setters - a mutator for each instance variable from part D1:
+		// 2b. Initializing Setters - a mutator for each instance variable from part D1:
 		void setID(string ID);
 		void setfirstName(string firstName);
 		void setlastName(string lastName);
