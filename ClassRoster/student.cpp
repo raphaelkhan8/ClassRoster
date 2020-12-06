@@ -7,18 +7,18 @@ Student::Student(){
 	this->lastName = "";
 	this->email = "";
 	this->age = 0;
-	for (int i = 0; i < numberOfCourses; i++) this->courseDurationInDays[i] = 0;
+	for (int i = 0; i < numberOfCourses; i++) this->daysInCourse[i] = 0;
 	this->degreeProgram = DegreeProgram::SOFTWARE;
 }
 
 // 2d. Constructor using all of the input parameters provided in the table:
-Student::Student(string studentID, string firstName, string lastName, string email, short age, short courseDurations[], DegreeProgram degreeProgram) {
+Student::Student(string studentID, string firstName, string lastName, string email, int age, int courseDurations[], DegreeProgram degreeProgram) {
 	this->studentID = studentID;
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->email = email;
 	this->age = age;
-	for (int i = 0; i < numberOfCourses; i++) this->courseDurationInDays[i] = courseDurations[i];
+	for (int i = 0; i < numberOfCourses; i++) this->daysInCourse[i] = courseDurations[i];
 	this->degreeProgram = degreeProgram;
 }
 
@@ -29,8 +29,8 @@ Student::~Student() {}
 string Student::getID() { return this->studentID; }
 string Student::getFullName() { return this->firstName + " " +  this->lastName; }
 string Student::getEmail() { return this->email; }
-short Student::getAge() { return this->age; }
-short* Student::getCourseDurations() { return this->courseDurationInDays; }
+int Student::getAge() { return this->age; }
+int* Student::getCourseDurations() { return this->daysInCourse; }
 DegreeProgram Student::getDegreeProgram() { return this->degreeProgram; }
 
 // 2b. Defining Setters:
@@ -40,7 +40,7 @@ void Student::setlastName(string lastName) { this->lastName = lastName; }
 void Student::setEmail(string email) { this->email = email; }
 void Student::setAge(short age) { this->age = age; }
 void Student::setCourseDurations(short courseDurations[]) {
-	for (int i = 0; i < numberOfCourses; i++) this->courseDurationInDays[i] = courseDurations[i];
+	for (int i = 0; i < numberOfCourses; i++) this->daysInCourse[i] = courseDurations[i];
 }
 void Student::setDegreeProgram(DegreeProgram degree) { this->degreeProgram = degree; }
 

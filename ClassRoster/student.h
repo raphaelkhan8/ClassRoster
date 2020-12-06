@@ -17,14 +17,14 @@ class Student {
 		string firstName;
 		string lastName;
 		string email;
-		short age;
-		short courseDurationInDays[numberOfCourses];
+		int age;
+		int daysInCourse[numberOfCourses];
 		DegreeProgram degreeProgram;
 	public:
 		// Calling default constructor:
 		Student();
 		// Calling constructor using all of the input parameters:
-		Student(string studentID, string firstName, string lastName, string email, short age, short courseDurationInDays[numberOfCourses], DegreeProgram degreeProgram);
+		Student(string studentID, string firstName, string lastName, string email, int age, int daysInCourse[numberOfCourses], DegreeProgram degreeProgram);
 		// Calling Destructor:
 		~Student();
 
@@ -32,8 +32,8 @@ class Student {
 		string getID();
 		string getFullName();
 		string getEmail();
-		short getAge();
-		short* getCourseDurations();
+		int getAge();
+		int* getCourseDurations();
 		DegreeProgram getDegreeProgram();
 
 		// 2b. Initializing Setters - a mutator for each instance variable from part D1:
