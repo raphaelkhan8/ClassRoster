@@ -158,3 +158,13 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 	}
 	cout << std::endl;
 }
+
+// F5: implement destructor to free memory dynamically allocated to objects created by this class
+Roster::~Roster() {
+	cout << "DESTRUCTOR DESTRUCTING!!!" << std::endl << std::endl;
+	for (int i = 0; i < numberOfStudents; i++) {
+		cout << "Removing student #" << i + 1 << std::endl;
+		delete classRosterArray[i];
+		classRosterArray[i] = nullptr;
+	}
+}
