@@ -45,6 +45,9 @@ class Student {
 		void setCourseDurations(short courseDurations[]);
 		void setDegreeProgram(DegreeProgram degree);
 
+		// Print header to organize info about to be printed
+		void printHeader();
+
 		// 2e. print() to print specific student data
 		void print();
 };

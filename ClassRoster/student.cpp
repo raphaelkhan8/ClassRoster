@@ -44,6 +44,11 @@ void Student::setCourseDurations(short courseDurations[]) {
 }
 void Student::setDegreeProgram(DegreeProgram degree) { this->degreeProgram = degree; }
 
+// Defining printheder function
+void Student::printHeader() {
+	cout << "Output format: Student ID|Full Name|Email|Age|Days In Course|Degree Program\n";
+}
+
 // 2e. Defining print function
 void Student::print() {
 	cout << this->getID() << '\t';
