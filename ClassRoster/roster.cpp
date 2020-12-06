@@ -55,7 +55,36 @@ void Roster::parse(string row) {
 	if (degree.substr(0, 2) == "SE") DegreeProgram degreeProgram = SECURITY;
 	else if (degree.substr(0, 2) == "NE") DegreeProgram degreeProgram = NETWORK;
 
-	// create the Student object by using add method
+	// E2b: create the Student object and add it to classRosterArray by using add method
 	add(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degreeProgram);
 }
 
+// E3a: implement add method (sets instance variables and updates the roster)
+void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
+	int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
+	// convert daysInCourse variables to array of ints:
+	int daysInCourseArr[3] = { daysInCourse1, daysInCourse2, daysInCourse3 };
+	// create a new Student object by calling constructor and add it to classRosterArray
+	classRosterArray[++lastIndex] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourseArr, degreeProgram);
+}
+
+// E3b: implement remove method (removes the student object with the passed in studentID)
+void Roster::remove(string studentID) {
+	// default varable to false (id is not found)
+	bool idFound = false;
+	for (int i = 0; i < numberOfStudents; i++) {
+		// if id is found, set idFound to true and make the corresponding Student object disappear:
+		if (classRosterArray[i]->getID() == studentID) {
+			idFound = true;
+			// make sure Student object isn't the last one in the array
+			if (i < numberOfStudents - 1) {
+				// swap the Student object's current index with the last one
+				Student* temp = classRosterArray[i];
+				classRosterArray[i] = classRosterArray[numberOfStudents - 1];
+				classRosterArray[numberOfStudents - 1] = temp;
+			}
+			// Decrement last index which makes the object invisible
+			Roster::lastIndex--;
+		}
+	}
+}
