@@ -43,15 +43,17 @@ int main()
     cout << std::endl;
 
     // F4c: Loop through classRosterArray and print the average days in course for each student:
+    cout << "Average days per course: " << std::endl;
     for (int i = 0; i < numberOfStudents; i++) {
-        cout << "Dispalying average days in course for: " + classRoster.classRosterArray[i]->getFullName() << std::endl;
         classRoster.printAverageDaysInCourse(classRoster.classRosterArray[i]->getID());
     }
+    cout << std::endl;
 
     // F4d: Call printByDegreeProgram to show students by degree program:
+    cout << "Students by degree program: " << std::endl;
     for (int i = 0; i < 3; i++) {
         // loop through degreeProgramStrings to get enum int coressponding to student's degree program
-        cout << "Displaying students by degree program: " << degreeProgramStrings[i] << std::endl;
+        cout << degreeProgramStrings[i] << std::endl;
         // call this instances's printDegreeProgram (cast passed-in int to DegreeProgram) to show student by degreeProgram
         classRoster.printByDegreeProgram((DegreeProgram)i);
     }

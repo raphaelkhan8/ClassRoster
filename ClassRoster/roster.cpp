@@ -121,16 +121,16 @@ void Roster::printAverageDaysInCourse(string studentID) {
 		// if id is found, set idFound to true and make the corresponding Student object disappear:
 		if (classRosterArray[i]->getID() == studentID) {
 			idFound = true;
-			cout << "StudentID: " << studentID << " (Average Days Per Course): ";
-			cout << (classRosterArray[i]->getCourseDurations()[0] +
+			cout << "Name: " << classRosterArray[i]->getFullName() << "\t";
+			cout << "StudentID: " << studentID << "\t";
+			cout << "Avg (in Days): "
+			<< (classRosterArray[i]->getCourseDurations()[0] +
 				classRosterArray[i]->getCourseDurations()[1] +
 				classRosterArray[i]->getCourseDurations()[2])
 				/ 3 << std::endl;
 		}
 	}
 	if (!idFound) cout << "Student ID not found :(" << std::endl;
-	// newline at the end
-	cout << std::endl;
 }
 
 // E3e: implement printInvalidEmails method (verifies student emails and prints all invalid emails)
@@ -145,7 +145,7 @@ void Roster::printInvalidEmails() {
 		if (email.find('@') == string::npos || email.find('.') == string::npos || email.find(" ") != string::npos) {
 			// set invaledEmails to true and print the invalid email and their corresponding name
 			invalidEmails = true;
-			cout << email << ": " << classRosterArray[i]->getFullName() << std::endl;
+			cout << classRosterArray[i]->getFullName() << ": " << email << std::endl;
 		}
 	}
 	// print message if no invalid emails are found
