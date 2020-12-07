@@ -5,6 +5,7 @@ class Roster {
 	private:
 		int lastIndex = -1;
 		const static int numberOfStudents = 5;
+	public:
 		// E1. Create an array of pointers to hold the data provided in the studentData table:
 		Student* classRosterArray[numberOfStudents];
 
