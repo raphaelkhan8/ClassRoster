@@ -5,6 +5,9 @@
 
 // parse each row (data is delimited by commas) and create the Student object
 void Roster::parse(string row) {
+
+	// container for degree program
+	DegreeProgram degreeProgram;
 	
 	// extract student ID:
 	int commaIndex = row.find(",");
@@ -51,10 +54,10 @@ void Roster::parse(string row) {
 	afterCommaIndex = commaIndex + 1;
 	commaIndex = row.find(',', afterCommaIndex);
 	// convert string degree to corresponding DegreeProgram
-	DegreeProgram degreeProgram = SOFTWARE;
 	string degree = row.substr(afterCommaIndex, commaIndex - afterCommaIndex);
-	if (degree.substr(0, 2) == "SE") DegreeProgram degreeProgram = SECURITY;
-	else if (degree.substr(0, 2) == "NE") DegreeProgram degreeProgram = NETWORK;
+	if (degree == "SECURITY") { degreeProgram = SECURITY; }
+	if (degree == "NETWORK") { degreeProgram = NETWORK; }
+	if (degree == "SOFTWARE") { degreeProgram = SOFTWARE; }
 
 	// E2b: create the Student object and add it to classRosterArray by using add method
 	add(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degreeProgram);
@@ -73,7 +76,7 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 void Roster::remove(string studentID) {
 	// default varable to false (assume id is not found)
 	bool idFound = false;
-	for (int i = 0; i < Roster::lastIndex; i++) {
+	for (int i = 0; i <= Roster::lastIndex; i++) {
 		// if id is found, set idFound to true and make the corresponding Student object disappear:
 		if (classRosterArray[i]->getID() == studentID) {
 			idFound = true;
@@ -104,19 +107,21 @@ void Roster::printAll() {
 	// print the Header
 	classRosterArray[0]->printHeader();
 	// loop through roster array and use Student's print method to print each student's info
-	for (int i = 0; i < Roster::lastIndex; i++) {
+	for (int i = 0; i <= Roster::lastIndex; i++) {
 		classRosterArray[i]->print();
 	}
+	// newline at the end
+	cout << std::endl;
 }
 
 // E3d: implement printAverageDaysInCourse method (prints student's average number of days in all three courses)
 void Roster::printAverageDaysInCourse(string studentID) {
 	bool idFound = false;
-	for (int i = 0; i < Roster::lastIndex; i++) {
+	for (int i = 0; i <= Roster::lastIndex; i++) {
 		// if id is found, set idFound to true and make the corresponding Student object disappear:
 		if (classRosterArray[i]->getID() == studentID) {
 			idFound = true;
-			cout << studentID << " (Average Days Per Course): ";
+			cout << "StudentID: " << studentID << " (Average Days Per Course): ";
 			cout << (classRosterArray[i]->getCourseDurations()[0] +
 				classRosterArray[i]->getCourseDurations()[1] +
 				classRosterArray[i]->getCourseDurations()[2])
@@ -124,6 +129,8 @@ void Roster::printAverageDaysInCourse(string studentID) {
 		}
 	}
 	if (!idFound) cout << "Student ID not found :(" << std::endl;
+	// newline at the end
+	cout << std::endl;
 }
 
 // E3e: implement printInvalidEmails method (verifies student emails and prints all invalid emails)
@@ -132,10 +139,10 @@ void Roster::printInvalidEmails() {
 	// assume there are no invalid emails
 	bool invalidEmails = false;
 	// loop through classRosterArray and get emails
-	for (int i = 0; i < Roster::lastIndex; i++) {
+	for (int i = 0; i <= Roster::lastIndex; i++) {
 		string email = (classRosterArray[i]->getEmail());
-		// if a space is found OR the email doesn't contain "@" OR the email doesn't contain "."
-		if (std::getline(std::cin, email) || email.find('@') == string::npos || email.find('.') == string::npos) {
+		// if the email doesn't contain "@" OR the email doesn't contain "." OR if a space is found
+		if (email.find('@') == string::npos || email.find('.') == string::npos || email.find(" ") != string::npos) {
 			// set invaledEmails to true and print the invalid email and their corresponding name
 			invalidEmails = true;
 			cout << email << ": " << classRosterArray[i]->getFullName() << std::endl;
@@ -150,7 +157,7 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 	//print header
 	classRosterArray[0]->printHeader();
 	// loop through classRosterArray and look for student's whose degreeProgram matches passed in value
-	for (int i = 0; i < Roster::lastIndex; i++) {
+	for (int i = 0; i <= Roster::lastIndex; i++) {
 		// if degreeProgram's match, print the student's info
 		if (Roster::classRosterArray[i]->getDegreeProgram() == degreeProgram) {
 			classRosterArray[i]->print();
