@@ -5,13 +5,10 @@
 
 using namespace std;
 
-// D1.  Create the class Student with associated variables:
 class Student {
 
 	public: 
-		// variable for size of array (must be constant):
 		const static int numberOfCourses = 3;
-	// 2c. private variables can only be accessed/modified externally through getters and setters:
 	private:
 		string studentID;
 		string firstName;
@@ -28,7 +25,7 @@ class Student {
 		// Calling Destructor:
 		~Student();
 
-		// 2a. Inititializing Getters - an accessor for each instance variable from part D1:
+		// Inititializing Getters
 		string getID();
 		string getFullName();
 		string getEmail();
@@ -36,7 +33,7 @@ class Student {
 		int* getCourseDurations();
 		DegreeProgram getDegreeProgram();
 
-		// 2b. Initializing Setters - a mutator for each instance variable from part D1:
+		// Initializing Setters
 		void setID(string ID);
 		void setfirstName(string firstName);
 		void setlastName(string lastName);
@@ -48,7 +45,7 @@ class Student {
 		// Print header to organize info about to be printed
 		void printHeader();
 
-		// 2e. print() to print specific student data
+		// print() to print specific student data
 		void print();
 };
 

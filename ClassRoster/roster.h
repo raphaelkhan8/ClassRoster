@@ -6,11 +6,10 @@ class Roster {
 		int lastIndex = -1;
 		const static int numberOfStudents = 5;
 	public:
-		// E1. Create an array of pointers to hold the data provided in the studentData table:
+		// Array of pointers to hold the data provided in the studentData table:
 		Student* classRosterArray[numberOfStudents];
 
 	public:
-		// E3a - E3f. Declare Roster class methods:
 		void parse(string row);
 
 		void add(string studentID, string firstName, string lastName, string emailAddress, int age,

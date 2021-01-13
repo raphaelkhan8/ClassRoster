@@ -11,7 +11,7 @@ Student::Student(){
 	this->degreeProgram = DegreeProgram::SOFTWARE;
 }
 
-// 2d. Constructor using all of the input parameters provided in the table:
+// Constructor
 Student::Student(string studentID, string firstName, string lastName, string email, int age, int courseDurations[], DegreeProgram degreeProgram) {
 	this->studentID = studentID;
 	this->firstName = firstName;
@@ -25,7 +25,7 @@ Student::Student(string studentID, string firstName, string lastName, string ema
 // Destructor:
 Student::~Student() {}
 
-// 2a. Defining Getters:
+// Getters:
 string Student::getID() { return this->studentID; }
 string Student::getFullName() { return this->firstName + " " +  this->lastName; }
 string Student::getEmail() { return this->email; }
@@ -33,7 +33,7 @@ int Student::getAge() { return this->age; }
 int* Student::getCourseDurations() { return this->daysInCourse; }
 DegreeProgram Student::getDegreeProgram() { return this->degreeProgram; }
 
-// 2b. Defining Setters:
+// Setters:
 void Student::setID(string ID) { this->studentID = ID;  }
 void Student::setfirstName(string firstName) { this->firstName = firstName;  }
 void Student::setlastName(string lastName) { this->lastName = lastName; }
@@ -44,12 +44,12 @@ void Student::setCourseDurations(short courseDurations[]) {
 }
 void Student::setDegreeProgram(DegreeProgram degree) { this->degreeProgram = degree; }
 
-// Defining printheder function
+// Prints header
 void Student::printHeader() {
 	cout << "Student ID|Full Name|Email|Age|Days In Course|Degree Program\n";
 }
 
-// 2e. Defining print function
+// Custom print function
 void Student::print() {
 	cout << this->getID() << '\t';
 	cout << this->getFullName() << '\t';

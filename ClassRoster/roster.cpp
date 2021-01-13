@@ -1,14 +1,11 @@
 #include "roster.h";
 #include "student.h";
 
-// E3a-E3f: implementation of Roster methods
-
-// parse each row (data is delimited by commas) and create the Student object
+// method for parsing student data and creating individual Student objects
 void Roster::parse(string row) {
 
 	// container for degree program
 	DegreeProgram degreeProgram;
-	
 	// extract student ID:
 	int commaIndex = row.find(",");
 	string studentID = row.substr(0, commaIndex);
@@ -59,11 +56,11 @@ void Roster::parse(string row) {
 	if (degree == "NETWORK") { degreeProgram = NETWORK; }
 	if (degree == "SOFTWARE") { degreeProgram = SOFTWARE; }
 
-	// E2b: create the Student object and add it to classRosterArray by using add method
+	// create the Student object and add it to classRosterArray by using add method
 	add(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degreeProgram);
 }
 
-// E3a: implement add method (sets instance variables and updates the roster)
+// adds a student to the class roster
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
 	int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram) {
 	// convert daysInCourse variables to array of ints:
@@ -72,7 +69,7 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 	classRosterArray[++lastIndex] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourseArr, degreeProgram);
 }
 
-// E3b: implement remove method (removes the student object with the passed in studentID)
+// removes a student from the roster
 void Roster::remove(string studentID) {
 	// default varable to false (assume id is not found)
 	bool idFound = false;
@@ -102,7 +99,7 @@ void Roster::remove(string studentID) {
 	}
 }
 
-// E3c: implement printAll method (prints a complete tab-separated list of student data for all students)
+// prints a complete tab-separated list of student data for all students
 void Roster::printAll() {
 	// print the Header
 	classRosterArray[0]->printHeader();
@@ -114,7 +111,7 @@ void Roster::printAll() {
 	cout << std::endl;
 }
 
-// E3d: implement printAverageDaysInCourse method (prints student's average number of days in all three courses)
+// prints student's average number of days in all three courses
 void Roster::printAverageDaysInCourse(string studentID) {
 	bool idFound = false;
 	for (int i = 0; i <= Roster::lastIndex; i++) {
@@ -133,8 +130,8 @@ void Roster::printAverageDaysInCourse(string studentID) {
 	if (!idFound) cout << "Student ID not found :(" << std::endl;
 }
 
-// E3e: implement printInvalidEmails method (verifies student emails and prints all invalid emails)
-// All emails should include an at ('@') sign and period '.' and should not include any spaces.
+/* verifies student emails and prints all invalid emails
+   All emails should include an at ('@') sign and period '.' and should not include any spaces. */
 void Roster::printInvalidEmails() {
 	// assume there are no invalid emails
 	bool invalidEmails = false;
@@ -152,7 +149,7 @@ void Roster::printInvalidEmails() {
 	if (!invalidEmails) cout << "No invalid emails found :D" << std::endl;
 }
 
-// E3f: implemt printByDegreeProgram method (prints out student info for a degree program specified by degree program
+// prints out student info for a degree program specified by degree program
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 	//print header
 	classRosterArray[0]->printHeader();
@@ -166,7 +163,7 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 	cout << std::endl;
 }
 
-// F5: implement destructor to free memory dynamically allocated to objects created by this class
+// implement destructor to free memory dynamically allocated to objects created by this class
 Roster::~Roster() {
 	cout << "DESTRUCTOR DESTRUCTING!!!" << std::endl << std::endl;
 	for (int i = 0; i < numberOfStudents; i++) {
